@@ -43,3 +43,24 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+// function to send items to supabase 
+export async function createItem(item) {
+    const response = await client.from('list').insert(item).single();
+    return response.data; 
+}
+
+// function to retrieve all the items from supabase 
+export async function getList() {
+    const response = await client.from('list').select('*');
+    return response.data;
+}
+// function for the user to update the item on supabase as complete
+export async function updateItem(id) {
+    const response = await client.from('list').update({ bought: true }).match({ id });
+    return response.data;
+}
+// function to delete all the items on supabase
+export async function deleteList() {
+    const response = await client.from('list').delete('*').match({ user_id: client.auth.user().id });
+    return response.data;
+}
