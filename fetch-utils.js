@@ -19,7 +19,6 @@ export function checkAuth() {
         // back to this page after they sign in...
         location.replace(`${authUrl}?redirectUrl=${encodeURIComponent(location)}`);
     }
-
     // return the user so can be used in the page if needed
     return user;
 }
@@ -42,25 +41,30 @@ export async function signOutUser() {
     return await client.auth.signOut();
 }
 
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
+}
+
+
 /* Data functions */
 // function to send items to supabase 
-export async function createItem(item) {
-    const response = await client.from('list').insert(item).single();
-    return response.data; 
+export async function addItem(thing) {
+    const response = await client.from('list').insert(thing);
+    return checkError(response); 
 }
 
 // function to retrieve all the items from supabase 
 export async function getList() {
     const response = await client.from('list').select('*');
-    return response.data;
+    return response;
 }
 // function for the user to update the item on supabase as complete
 export async function updateItem(id) {
     const response = await client.from('list').update({ bought: true }).match({ id });
-    return response.data;
+    return response;
 }
 // function to delete all the items on supabase
 export async function deleteList() {
     const response = await client.from('list').delete('*').match({ user_id: client.auth.user().id });
-    return response.data;
+    return response;
 }

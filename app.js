@@ -1,7 +1,6 @@
-// importing other stuff, utility functions for:
-// working with supabase:
+
 import { checkAuth, signOutUser } from './fetch-utils.js';
-// pure rendering (data --> DOM):
+import { addItem, getList, updateItem, deleteList} from './fetch-utils.js';
 
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
@@ -14,10 +13,18 @@ const signOutLink = document.getElementById('sign-out-link');
 signOutLink.addEventListener('click', signOutUser);
 /* end "boiler plate auth code" */
 
-// grab needed DOM elements on page:
+//DOM Elements
 
-// local state:
+const formEl = document.querySelector('.form');
 
-// display functions:
+//form
+formEl.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = new FormData(formEl);
 
-// events:
+    await addItem({ 
+        item: data.get('item'), 
+        quantity: data.get('quantity') });
+
+    formEl.reset();
+});
