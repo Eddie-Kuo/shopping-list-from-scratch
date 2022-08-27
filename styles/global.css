@@ -15,6 +15,7 @@ body {
     background: var(--background);
     display: grid;
     grid-template-rows: auto 1fr auto;
+    background-image: url(../assets/pattern-background.jpg);
 }
 
 .page-header {
@@ -51,4 +52,63 @@ footer {
     display: flex;
     justify-content: flex-end;
     background-color: var(--footer-background);
+}
+
+h2 {
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.number {
+    width: 75px;
+}
+
+.body-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 500px;
+    height: 600px;
+    margin: 10px;
+    background-color: lightskyblue;
+    opacity: .9;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.list-item {
+    margin: 5px;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.incomplete {
+    cursor: pointer;
+    background-color: lightsalmon;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.bought {
+    text-decoration: line-through;
+    background-color: lightslategray;
+    width: 60%;
+    border-radius: 5px;
 }
