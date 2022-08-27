@@ -98,3 +98,17 @@ h2 {
     width: 100%;
     text-align: center;
 }
+
+.incomplete {
+    cursor: pointer;
+    background-color: lightsalmon;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.bought {
+    text-decoration: line-through;
+    background-color: lightslategray;
+    width: 60%;
+    border-radius: 5px;
+}
